@@ -164,7 +164,7 @@ func (c *LogControl) Register(application, component string) error {
 		// add header
 		// TODO: Correct log control file documentation link
 		fmt.Fprintf(c.fw, "# log control file, modified by log-control\n")
-		fmt.Fprintf(c.fw, "# See https://github.com/ean/log/blob/master/foo for details")
+		fmt.Fprintf(c.fw, "# See https://github.com/ean/log/blob/master/foo for details\n")
 	}
 	line := fmt.Sprintf("%s:%s%s\n", application, component, DefaultLevelString)
 	c.fw.WriteString(line)
