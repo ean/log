@@ -22,20 +22,7 @@ func (c *LogControl) keyPresent(application string, component string) bool {
 	m := c.memory.Data
 	str := ApplicationAndComponentToKey(application, component) + " "
 	needle := []byte("\n" + str)
-<<<<<<< HEAD
-	i := bytes.Index(m, needle)
-	return i >= 0
-=======
-	// TODO: Add header to avoid initial check
-	if len(m) > len(str) && bytes.Compare(m[0:len(str)], []byte(str)) == 0 {
-		return true
-	}
-	i := bytes.Index(m, needle)
-	if i >= 0 {
-		return true
-	}
-	return false
->>>>>>> 727a700... Use stdlib functionality instead of hand-rolling bytes.Index()
+	return bytes.Contains(m, needle)
 }
 
 func parseControl(m []byte) ([]*ControlLine, error) {
